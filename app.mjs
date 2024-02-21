@@ -1,5 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import cors from 'cors';
 import { config as dotenvConfig } from 'dotenv';
 import {healthTipsRoutes} from './routes/healthTipsRoutes.mjs'; // Import health tips routes
 import { groceriesRoutes } from './routes/groceriesRoutes.mjs';; // Import groceries routes
@@ -9,6 +10,9 @@ import { groceriesRoutes } from './routes/groceriesRoutes.mjs';; // Import groce
 dotenvConfig(); //saves io process.env
 
 const app = express(); //be used to define routes and middleware for backend.
+// Allow requests from all origins
+app.use(cors());
+
 
 // Connect to MongoDB
 const mongoURI = process.env.MONGO_URI;
